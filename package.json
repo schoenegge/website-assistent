@@ -1,6 +1,6 @@
 {
   "name": "@schoenegge/website-assistent",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "KI-Assistent für die Websites von schoenegge.io (Chat-Leiste, Antwortregeln, Lead-Übergabe, Kostendeckel, Chatverlauf). Eine Quelle, mehrere Websites.",
   "license": "UNLICENSED",
   "type": "module",

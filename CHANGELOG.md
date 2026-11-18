@@ -1,5 +1,9 @@
 # Änderungen
 
+## 1.0.2 (18.11.2026)
+
+- Beim ersten Öffnen stehen bis zu drei Einstiegsfragen der Seite unter der Begrüßung.
+
 ## 1.0.1 (18.11.2026)
 
 - Anschlussfragen nur, solange das Gespräch aus Beispielfragen besteht. Schreibt der Besucher selbst, erscheinen keine festen Fragen mehr (passten nach eigenen Fragen nicht zum Gespräch).

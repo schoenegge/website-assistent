@@ -414,14 +414,19 @@ export function ChatAssistent({ konfig, zusatzKoerper }: Eigenschaften) {
     ...Object.values(konfig.beispielfragen.exakt ?? {}).flat(),
   ])
   const nurBeispielfragen = [...gestellt].every((f) => bekannteFragen.has(f))
-  const anschluss =
-    !laeuft && !error && letzte?.role === 'assistant' && nurBeispielfragen
+  // Beim ersten Öffnen bis zu drei Einstiegsfragen unter der Begrüßung, danach
+  // zwei Anschlussfragen unter jeder Antwort (Oliver 18.11.2026).
+  const einstieg = messages.length === 0 && !laeuft
+  const anschluss = einstieg
+    ? fragen.filter((f) => f !== vorschlag).slice(0, 3)
+    : !laeuft && !error && letzte?.role === 'assistant' && nurBeispielfragen
       ? fragen.filter((f) => !gestellt.has(f)).slice(0, 2)
       : []
 
   function anschlussStellen(frage: string) {
     if (laeuft) return
-    zaehle('chat_nachricht', { quelle: 'anschlussfrage' })
+    setVorschlag(null)
+    zaehle('chat_nachricht', { quelle: einstieg ? 'einstiegsfrage' : 'anschlussfrage' })
     void sendMessage({ text: frage })
   }
 
@@ -572,7 +577,7 @@ export function ChatAssistent({ konfig, zusatzKoerper }: Eigenschaften) {
             )}
 
             {anschluss.length > 0 && (
-              <div className="flex flex-wrap justify-end gap-2" aria-label="Mögliche Anschlussfragen">
+              <div className="flex flex-wrap justify-end gap-2" aria-label={einstieg ? 'Mögliche Fragen zum Einstieg' : 'Mögliche Anschlussfragen'}>
                 {anschluss.map((frage) => (
                   <button
                     key={frage}
