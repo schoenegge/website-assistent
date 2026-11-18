@@ -1,5 +1,9 @@
 # Änderungen
 
+## 1.0.1 (18.11.2026)
+
+- Anschlussfragen nur, solange das Gespräch aus Beispielfragen besteht. Schreibt der Besucher selbst, erscheinen keine festen Fragen mehr (passten nach eigenen Fragen nicht zum Gespräch).
+
 ## 1.0.0 (18.11.2026)
 
 Erste Fassung als gemeinsames Paket, zusammengeführt aus schoenegge.io und fixseite.de:

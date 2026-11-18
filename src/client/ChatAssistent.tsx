@@ -405,8 +405,17 @@ export function ChatAssistent({ konfig, zusatzKoerper }: Eigenschaften) {
           .join(''),
       ),
   )
+  // Nur solange das Gespräch aus Beispielfragen besteht. Hat der Besucher
+  // selbst etwas geschrieben, passen feste Fragen nicht mehr zum Gespräch
+  // (Oliver 18.11.2026: nach einer Preisfrage standen dort Shop-Fragen).
+  const bekannteFragen = new Set([
+    ...konfig.beispielfragen.allgemein,
+    ...Object.values(konfig.beispielfragen.jeSeite).flat(),
+    ...Object.values(konfig.beispielfragen.exakt ?? {}).flat(),
+  ])
+  const nurBeispielfragen = [...gestellt].every((f) => bekannteFragen.has(f))
   const anschluss =
-    !laeuft && !error && letzte?.role === 'assistant'
+    !laeuft && !error && letzte?.role === 'assistant' && nurBeispielfragen
       ? fragen.filter((f) => !gestellt.has(f)).slice(0, 2)
       : []
 
