@@ -53,6 +53,7 @@ export const GET = assistent.GET_STATUS
 1. Änderung hier, `npm run typecheck`.
 2. Vor dem Release auf beiden Websites lokal die Beispielfragen echt stellen (Antworten ohne Preise, ohne erfundene Zahlen).
 3. Version in `package.json` und `CHANGELOG.md` hochzählen, Tag `vX.Y.Z` pushen.
-4. In beiden Websites die Versionszeile anheben, `npm install`, bauen, live.
+4. In beiden Websites `npm install github:schoenegge/website-assistent#vX.Y.Z` ausführen (nur die Versionszeile ändern reicht nicht, npm hält sonst den alten Stand), prüfen, dass `node_modules/@schoenegge/website-assistent/package.json` die neue Version zeigt, bauen, `package.json` und `package-lock.json` committen, live.
+5. Nach dem Deploy im Vercel-Build-Log prüfen, dass das Paket geändert wurde (`changed … packages`), nicht `up to date`. Ohne Sperrdatei im Repo stellt Vercel den alten Stand aus dem Build-Cache wieder her (18.11.2026).
 
 Was gemeinsam ist (Regeln, Leiste, Übergabe), gehört hierher. Was nur eine Website betrifft (Kriterien, Beispielfragen, Texte, Farben), gehört in deren Konfiguration.
