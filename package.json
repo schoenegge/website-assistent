@@ -1,0 +1,26 @@
+{
+  "name": "@schoenegge/website-assistent",
+  "version": "1.0.0",
+  "description": "KI-Assistent für die Websites von schoenegge.io (Chat-Leiste, Antwortregeln, Lead-Übergabe, Kostendeckel, Chatverlauf). Eine Quelle, mehrere Websites.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "exports": {
+    "./server": "./src/server/index.ts",
+    "./client": "./src/client/index.ts",
+    "./typen": "./src/typen.ts"
+  },
+  "files": ["src", "README.md", "CHANGELOG.md"],
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "@ai-sdk/anthropic": ">=4",
+    "@ai-sdk/react": ">=4",
+    "@vercel/analytics": ">=1.6",
+    "ai": ">=7",
+    "botid": ">=1.5",
+    "clsx": ">=2",
+    "next": ">=14",
+    "react": ">=18"
+  }
+}
